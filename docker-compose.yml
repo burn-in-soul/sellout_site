@@ -20,7 +20,7 @@ services:
     restart: always
     volumes:
       - ./:/opt/app:delegated
-      - static_volume:/static
+      - static_volume:/application/staticfiles
     ports:
       - "8000:8000"
     command: bash -c "make migration && make run"
@@ -53,6 +53,6 @@ services:
       - infra
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - static_volume:/static
+      - static_volume:/staticfiles
     ports:
       - "80:80"
