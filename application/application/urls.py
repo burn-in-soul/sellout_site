@@ -27,6 +27,7 @@ urlpatterns = [
     path('sellout/redoc/', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),
     path('sellout/admin/', admin.site.urls),
     path('sellout/api/concerts/', include('application.concerts.urls')),
+    path('sellout/api/mainpage/', include('application.mainpage.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
