@@ -9,7 +9,7 @@ services:
     tty: true
     build:
       context: .
-    container_name: web
+    container_name: sellout-web
     restart: always
     volumes:
       - ./:/opt/app:delegated
