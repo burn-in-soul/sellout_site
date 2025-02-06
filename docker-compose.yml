@@ -13,8 +13,6 @@ services:
     restart: always
     volumes:
       - ./:/opt/app:delegated
-    depends_on:
-      - postgres
     ports:
       - "8000:8000"
     command: bash -c "make migration && make run"
