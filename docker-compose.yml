@@ -1,0 +1,47 @@
+version: '3.2'
+
+volumes:
+  local_postgres_data:
+
+services:
+
+  sellout-web:
+    tty: true
+    build:
+      context: .
+    container_name: web
+    restart: always
+    volumes:
+      - ./:/opt/app:delegated
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    command: bash -c "make migration && make run"
+
+  postgres:
+    image: postgres:14.10-alpine
+    restart: on-failure
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=sellout
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - local_postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nginx:
+    image: nginx:latest
+    container_name: production_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:80"

@@ -1,0 +1,15 @@
+{
+  "environment": {
+    "debug": true,
+    "secret_key": "test",
+    "allowed_hosts": []
+  },
+  "databases": {
+    "login": "postgres",
+    "password": "postgres",
+    "host": "postgres",
+    "port": 5432,
+    "name": "sellout",
+    "engine": "django.db.backends.postgresql"
+  }
+}
