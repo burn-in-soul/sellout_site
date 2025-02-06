@@ -22,7 +22,7 @@ def run():
         "bind": "0.0.0.0:8000",
         "workers": 1,
     }
-    StandaloneApplication("application.application.wsgi:app", options).run()
+    StandaloneApplication("application.application.wsgi:application", options).run()
 
 
 if __name__ == "__main__":
