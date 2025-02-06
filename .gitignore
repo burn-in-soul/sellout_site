@@ -112,3 +112,4 @@ config.json
 /secrets/
 /junit.xml
 /temp/
+/images

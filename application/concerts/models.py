@@ -36,6 +36,7 @@ class Concert(models.Model):
         null=False,
         blank=False,
     )
+    poster = models.ImageField(upload_to='images/', null=True)
 
     def __str__(self):
         return self.title
