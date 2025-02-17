@@ -15,8 +15,8 @@ class Concert(models.Model):
     )
     end_datetime = models.DateTimeField(
         verbose_name='Время начала',
-        null=False,
-        blank=False,
+        null=True,
+        blank=True,
     )
     address = models.CharField(
         verbose_name='Адрес',
